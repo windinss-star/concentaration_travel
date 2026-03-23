@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>집중 여행 서비스 목업</title>
+  <style>
+    :root {
+      --bg: #f4eadf;
+      --paper: #fffaf4;
+      --ink: #2e241d;
+      --muted: #7f6c5d;
+      --accent: #b66d47;
+      --accent-soft: #d9b59b;
+      --line: rgba(64, 43, 28, 0.12);
+      --shadow: 0 24px 60px rgba(83, 54, 35, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Apple SD Gothic Neo", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.7), transparent 32%),
+        linear-gradient(180deg, #efe4d8 0%, #eadcca 45%, #e1d1bf 100%);
+      color: var(--ink);
+    }
+
+    .page {
+      width: min(1440px, calc(100vw - 40px));
+      margin: 0 auto;
+      padding: 32px 0 48px;
+    }
+
+    .hero {
+      margin-bottom: 28px;
+      padding: 28px 32px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(255, 250, 244, 0.74);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: 1.02;
+      font-weight: 700;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .screen {
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .screen-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.52);
+    }
+
+    .screen-title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .screen-note {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .screen-body {
+      min-height: 760px;
+      padding: 26px;
+      position: relative;
+    }
+
+    .room {
+      min-height: 708px;
+      padding: 24px;
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0) 30%),
+        linear-gradient(180deg, #b48a72 0%, #d4b39a 38%, #cfb49e 38%, #cfb49e 100%);
+      position: relative;
+    }
+
+    .window,
+    .shelf,
+    .table,
+    .bed {
+      position: absolute;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255, 248, 242, 0.18);
+    }
+
+    .window {
+      top: 38px;
+      right: 34px;
+      width: 170px;
+      height: 200px;
+      background: linear-gradient(180deg, #e3d4c6 0%, #a6bccd 100%);
+    }
+
+    .shelf {
+      top: 62px;
+      left: 44px;
+      width: 160px;
+      height: 74px;
+      background: rgba(132, 84, 61, 0.34);
+    }
+
+    .table {
+      bottom: 122px;
+      left: 36px;
+      width: 220px;
+      height: 88px;
+      background: rgba(138, 93, 70, 0.44);
+    }
+
+    .bed {
+      bottom: 64px;
+      right: 28px;
+      width: 220px;
+      height: 138px;
+      background: rgba(248, 235, 224, 0.42);
+    }
+
+    .copy-block {
+      position: relative;
+      z-index: 2;
+      max-width: 360px;
+      margin-top: 6px;
+    }
+
+    .copy-block h2 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.15;
+    }
+
+    .copy-block p {
+      margin: 10px 0 0;
+      color: #f8efe8;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .character-crowd {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 38px;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 10px;
+      z-index: 2;
+    }
+
+    .character {
+      width: 104px;
+      padding: 12px 8px 10px;
+      border-radius: 20px;
+      background: rgba(255, 248, 242, 0.16);
+      border: 1px solid rgba(255,255,255,0.2);
+      text-align: center;
+      color: #fff7f1;
+    }
+
+    .character.selected {
+      transform: translateY(-10px);
+      background: rgba(255, 247, 239, 0.32);
+      box-shadow: 0 18px 30px rgba(57, 32, 16, 0.18);
+    }
+
+    .avatar {
+      width: 56px;
+      height: 86px;
+      margin: 0 auto 8px;
+      position: relative;
+    }
+
+    .avatar .head,
+    .avatar .body {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 12px;
+    }
+
+    .avatar .head {
+      top: 0;
+      width: 36px;
+      height: 34px;
+      background: #f0d1b4;
+      border: 4px solid rgba(53, 31, 18, 0.9);
+    }
+
+    .avatar .body {
+      top: 30px;
+      width: 42px;
+      height: 54px;
+      background: var(--cloth, #3f5564);
+      border-radius: 14px 14px 10px 10px;
+    }
+
+    .avatar.glasses::before,
+    .avatar.glasses::after {
+      content: "";
+      position: absolute;
+      top: 13px;
+      width: 10px;
+      height: 10px;
+      border: 2px solid #25170f;
+      border-radius: 50%;
+      z-index: 2;
+    }
+
+    .avatar.glasses::before {
+      left: 14px;
+    }
+
+    .avatar.glasses::after {
+      right: 14px;
+    }
+
+    .bubble {
+      position: absolute;
+      right: 26px;
+      bottom: 250px;
+      width: 196px;
+      padding: 16px 18px;
+      border-radius: 22px;
+      background: rgba(255, 250, 245, 0.86);
+      box-shadow: 0 12px 24px rgba(60, 37, 25, 0.12);
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.55;
+      z-index: 2;
+    }
+
+    .bubble strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 18px;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 18px;
+      padding: 13px 22px;
+      border-radius: 999px;
+      background: rgba(44, 27, 17, 0.84);
+      color: #fff8f2;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .terminal {
+      min-height: 708px;
+      padding: 28px;
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.12), transparent 22%),
+        linear-gradient(160deg, #e7d5c6 0%, #c4b09e 38%, #aa9382 100%);
+    }
+
+    .pill-row {
+      display: grid;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .pill {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      border-radius: 22px;
+      background: rgba(255, 250, 244, 0.74);
+      border: 1px solid rgba(69, 42, 28, 0.1);
+      color: var(--ink);
+      font-size: 18px;
+    }
+
+    .pill.active {
+      background: rgba(255, 246, 238, 0.95);
+      border-color: rgba(130, 76, 44, 0.32);
+      box-shadow: 0 10px 24px rgba(92, 57, 34, 0.12);
+    }
+
+    .pill span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .lounge {
+      height: 168px;
+      margin-top: 22px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(66, 73, 92, 0.92), rgba(48, 48, 55, 0.92));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lounge::before {
+      content: "";
+      position: absolute;
+      inset: 26px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent);
+    }
+
+    .boarding {
+      position: absolute;
+      left: 28px;
+      bottom: 24px;
+      color: #f8f0e8;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+
+    .cinema {
+      min-height: 708px;
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.06), transparent 20%),
+        linear-gradient(180deg, #d7c6b4 0%, #9eb0bf 48%, #7d8e9d 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hud {
+      position: absolute;
+      top: 22px;
+      left: 22px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(255, 249, 242, 0.78);
+      border: 1px solid rgba(73, 49, 32, 0.1);
+      box-shadow: 0 10px 30px rgba(49, 31, 20, 0.12);
+      z-index: 3;
+    }
+
+    .hud .time {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .hud .sound {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .location-chip {
+      position: absolute;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: rgba(245, 238, 230, 0.84);
+      color: var(--ink);
+      font-size: 14px;
+      box-shadow: 0 8px 20px rgba(40, 23, 14, 0.1);
+    }
+
+    .plane-window {
+      position: absolute;
+      top: 82px;
+      right: 72px;
+      width: 190px;
+      height: 248px;
+      border-radius: 94px;
+      border: 12px solid rgba(243, 233, 224, 0.62);
+      background: linear-gradient(180deg, #dde5ea 0%, #91b0c6 100%);
+    }
+
+    .seat {
+      position: absolute;
+      left: 50%;
+      bottom: 90px;
+      width: 220px;
+      height: 250px;
+      transform: translateX(-50%);
+      border-radius: 38px 38px 28px 28px;
+      background: linear-gradient(180deg, #7b8ea0 0%, #546472 100%);
+      box-shadow: inset 0 -14px 24px rgba(0,0,0,0.12);
+    }
+
+    .seat::before {
+      content: "";
+      position: absolute;
+      inset: 26px 28px 34px;
+      border-radius: 26px;
+      background: rgba(229, 235, 238, 0.16);
+    }
+
+    .traveler {
+      position: absolute;
+      left: 50%;
+      bottom: 116px;
+      width: 120px;
+      height: 200px;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .traveler .head {
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      width: 56px;
+      height: 56px;
+      transform: translateX(-50%);
+      border-radius: 18px;
+      background: #f0d1b4;
+      border: 6px solid #2a1a11;
+    }
+
+    .traveler .body {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      width: 76px;
+      height: 104px;
+      transform: translateX(-50%);
+      border-radius: 22px;
+      background: #d9dfdf;
+    }
+
+    .traveler .book {
+      position: absolute;
+      right: 6px;
+      bottom: 76px;
+      width: 34px;
+      height: 46px;
+      border-radius: 8px;
+      background: #f4e8cf;
+      transform: rotate(-8deg);
+    }
+
+    .bottom-sheet {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 20px;
+      padding: 16px 18px 18px;
+      border-radius: 24px;
+      background: rgba(255, 249, 242, 0.9);
+      box-shadow: 0 16px 34px rgba(45, 28, 18, 0.12);
+    }
+
+    .bottom-sheet h3 {
+      margin: 0 0 12px;
+      font-size: 16px;
+    }
+
+    .sound-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .sound-tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(205, 177, 153, 0.28);
+      color: var(--ink);
+      font-size: 13px;
+    }
+
+    .sound-tag.active {
+      background: rgba(182, 109, 71, 0.18);
+      border: 1px solid rgba(182, 109, 71, 0.24);
+    }
+
+    .arrival {
+      min-height: 708px;
+      padding: 28px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.5), transparent 28%),
+        linear-gradient(180deg, #d6c8b8 0%, #c4b29c 36%, #b39d87 100%);
+      position: relative;
+    }
+
+    .card {
+      max-width: 430px;
+      margin-top: 220px;
+      padding: 28px 28px 24px;
+      border-radius: 28px;
+      background: rgba(255, 251, 245, 0.82);
+      box-shadow: 0 18px 40px rgba(61, 38, 26, 0.12);
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.2;
+    }
+
+    .card p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .summary {
+      margin-top: 22px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .summary div {
+      display: flex;
+      justify-content: space-between;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .summary dt {
+      color: var(--muted);
+    }
+
+    .summary dd {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    @media (max-width: 1100px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .screen-body {
+        min-height: auto;
+      }
+      .room,
+      .terminal,
+      .cinema,
+      .arrival {
+        min-height: 640px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">Travel Focus Mockup</p>
+      <h1>집중 여행 서비스 1차 화면 목업</h1>
+      <p>문서로 정리한 기획을 실제 화면 감각으로 확인할 수 있도록 첫 진입 화면, 시간 선택 화면, 세션 진행 화면, 세션 종료 화면을 하나의 HTML 목업으로 구성했습니다. 도트 3D 자산 대신 색면과 블록으로 분위기와 구조를 먼저 검증하는 용도입니다.</p>
+    </section>
+
+    <section class="grid">
+      <article class="screen">
+        <div class="screen-head">
+          <h2 class="screen-title">첫 진입 화면</h2>
+          <span class="screen-note">자취방 + 캐릭터 군집형 선택</span>
+        </div>
+        <div class="screen-body">
+          <div class="room">
+            <div class="shelf"></div>
+            <div class="window"></div>
+            <div class="table"></div>
+            <div class="bed"></div>
+            <div class="copy-block">
+              <h2>누구와 여행을 떠날까요?</h2>
+              <p>함께 여행할 친구를 선택해주세요</p>
+            </div>
+            <div class="bubble">
+              <strong>오늘은 잰</strong>
+              카페와 관광지 비중이 높은 조용한 여행을 준비하고 있어요.
+              <div class="cta">떠나볼까요?</div>
+            </div>
+            <div class="character-crowd">
+              <div class="character">
+                <div class="avatar glasses" style="--cloth:#58696c;">
+                  <div class="head"></div>
+                  <div class="body"></div>
+                </div>
+                빠
+              </div>
+              <div class="character">
+                <div class="avatar" style="--cloth:#756054;">
+                  <div class="head"></div>
+                  <div class="body" style="width:48px;"></div>
+                </div>
+                곽
+              </div>
+              <div class="character">
+                <div class="avatar" style="--cloth:#a88d66;">
+                  <div class="head"></div>
+                  <div class="body" style="height:60px;"></div>
+                </div>
+                노
+              </div>
+              <div class="character">
+                <div class="avatar glasses" style="--cloth:#7f5c56;">
+                  <div class="head"></div>
+                  <div class="body" style="width:46px;"></div>
+                </div>
+                원
+              </div>
+              <div class="character selected">
+                <div class="avatar" style="--cloth:#d4c7b0;">
+                  <div class="head"></div>
+                  <div class="body" style="height:62px;"></div>
+                </div>
+                잰
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="screen">
+        <div class="screen-head">
+          <h2 class="screen-title">시간 선택 화면</h2>
+          <span class="screen-note">공항 라운지 전환 후 시간 선택</span>
+        </div>
+        <div class="screen-body">
+          <div class="terminal">
+            <div class="copy-block" style="max-width:100%;">
+              <h2>어디로 떠날까요?</h2>
+              <p style="color:#54453c;">집중 시간을 여행 거리처럼 선택하는 화면입니다.</p>
+            </div>
+            <div class="lounge">
+              <div class="boarding">탑승 준비가 끝났어요.<br>오늘의 여행 시간을 골라주세요.</div>
+            </div>
+            <div class="pill-row">
+              <div class="pill"><strong>국내여행</strong><span>1시간</span></div>
+              <div class="pill"><strong>아시아 여행</strong><span>2시간</span></div>
+              <div class="pill"><strong>유럽 여행</strong><span>3시간</span></div>
+              <div class="pill"><strong>미국 여행</strong><span>4시간</span></div>
+              <div class="pill active"><strong>남극 여행</strong><span>5시간</span></div>
+            </div>
+            <div class="cta" style="margin-top:24px;">떠나볼까요?</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="screen">
+        <div class="screen-head">
+          <h2 class="screen-title">세션 진행 화면</h2>
+          <span class="screen-note">시네마형 + 좌상단 HUD</span>
+        </div>
+        <div class="screen-body">
+          <div class="cinema">
+            <div class="hud">
+              <div class="time">03:42:18</div>
+              <div class="sound">기내 소음 · 자동 재생</div>
+            </div>
+            <div class="location-chip">다낭으로 향하는 비행기 안</div>
+            <div class="plane-window"></div>
+            <div class="seat"></div>
+            <div class="traveler">
+              <div class="head"></div>
+              <div class="body"></div>
+              <div class="book"></div>
+            </div>
+            <div class="bottom-sheet">
+              <h3>사운드 변경</h3>
+              <div class="sound-tags">
+                <div class="sound-tag active">기내 소음</div>
+                <div class="sound-tag">빗소리</div>
+                <div class="sound-tag">카페 앰비언스</div>
+                <div class="sound-tag">바람 소리</div>
+                <div class="sound-tag">화이트노이즈</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="screen">
+        <div class="screen-head">
+          <h2 class="screen-title">세션 종료 화면</h2>
+          <span class="screen-note">도착형 종료 + 기록 요약</span>
+        </div>
+        <div class="screen-body">
+          <div class="arrival">
+            <div class="card">
+              <h2>목적지에 도착했어요.</h2>
+              <p>오늘의 여행은 잔잔하게 마무리됐어요. 다음에도 지금처럼 천천히 떠나보면 좋아요.</p>
+              <dl class="summary">
+                <div><dt>오늘의 집중 시간</dt><dd>5시간</dd></div>
+                <div><dt>따라간 루트</dt><dd>비행기 → 음식점 → 카페 → 관광지 → 숙소</dd></div>
+                <div><dt>선택한 캐릭터</dt><dd>잰</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
