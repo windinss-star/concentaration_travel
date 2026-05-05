@@ -1214,62 +1214,95 @@
     const randomBackgroundPools = {
       city: [
         {
+          key: 'gyeongbokgung',
           image: './assets/tour-gyeongbokgung.png',
           label: '서울의 경복궁'
         },
         {
+          key: 'statue-of-liberty',
           image: './assets/tour-statue-of-liberty.png',
           label: '뉴욕의 자유의 여신상'
         },
         {
+          key: 'iceland',
           image: './assets/tour-iceland.png',
           label: '아이슬란드의 풍경'
         }
       ],
       food: [
         {
+          key: 'vietnam',
           image: './assets/food-vietnam.png',
           label: '베트남의 작은 식당'
         },
         {
+          key: 'europe',
           image: './assets/food-europe.png',
           label: '유럽의 조용한 식당'
         }
       ],
       stay: [
         {
+          key: 'five-star-hotel',
           image: './assets/stay-five-star-hotel.png',
           label: '5성 호텔'
         },
         {
+          key: 'dormitory',
           image: './assets/stay-dormitory.png',
           label: '도미토리'
         },
         {
+          key: 'tent',
           image: './assets/stay-tent.png',
           label: '텐트 숙소'
         }
       ]
     };
 
-    let activeScreen = "home";
+    const urlParams = new URLSearchParams(window.location.search);
+    let activeScreen = screenOrder.includes(urlParams.get("screen")) ? urlParams.get("screen") : "home";
+    let activeScenes = {
+      city: null,
+      food: null,
+      stay: null
+    };
 
     function applyRandomScene(screenNode, scene) {
       screenNode.style.setProperty('--scene-image', `url("${scene.image}")`);
     }
 
+    function pickScene(poolName, requestedKey) {
+      const pool = randomBackgroundPools[poolName];
+      const matchedScene = pool.find((scene) => scene.key === requestedKey);
+      if (matchedScene) return matchedScene;
+      return pool[Math.floor(Math.random() * pool.length)];
+    }
+
+    function syncUrl() {
+      const nextParams = new URLSearchParams();
+      nextParams.set("screen", activeScreen);
+      nextParams.set("cityScene", activeScenes.city.key);
+      nextParams.set("foodScene", activeScenes.food.key);
+      nextParams.set("stayScene", activeScenes.stay.key);
+      const nextUrl = `${window.location.pathname}?${nextParams.toString()}`;
+      window.history.replaceState({}, "", nextUrl);
+    }
+
     function initializeRandomScenes() {
-      const cityScene = randomBackgroundPools.city[Math.floor(Math.random() * randomBackgroundPools.city.length)];
-      const foodScene = randomBackgroundPools.food[Math.floor(Math.random() * randomBackgroundPools.food.length)];
-      const stayScene = randomBackgroundPools.stay[Math.floor(Math.random() * randomBackgroundPools.stay.length)];
+      activeScenes = {
+        city: pickScene("city", urlParams.get("cityScene")),
+        food: pickScene("food", urlParams.get("foodScene")),
+        stay: pickScene("stay", urlParams.get("stayScene"))
+      };
 
-      applyRandomScene(cityScreen, cityScene);
-      applyRandomScene(foodScreen, foodScene);
-      applyRandomScene(stayScreen, stayScene);
+      applyRandomScene(cityScreen, activeScenes.city);
+      applyRandomScene(foodScreen, activeScenes.food);
+      applyRandomScene(stayScreen, activeScenes.stay);
 
-      cityLocation.textContent = cityScene.label;
-      foodLocation.textContent = foodScene.label;
-      stayLocation.textContent = stayScene.label;
+      cityLocation.textContent = activeScenes.city.label;
+      foodLocation.textContent = activeScenes.food.label;
+      stayLocation.textContent = activeScenes.stay.label;
     }
 
     function setScreen(target) {
@@ -1290,6 +1323,7 @@
 
       titleNode.textContent = screenMeta[target].title;
       captionNode.textContent = screenMeta[target].caption;
+      syncUrl();
     }
 
     targetButtons.forEach((button) => {
