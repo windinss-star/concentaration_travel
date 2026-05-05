@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -1028,26 +1028,31 @@
 
             <section class="app-screen city-screen" data-screen="city">
               <div class="status-bar"></div>
-
-              <div class="city-timer">
-                <strong>04:21:08</strong>
-                <span>현재 세션</span>
+              <div class="session-hud">
+                <div class="hud-card">
+                  <strong>04:21:08</strong>
+                  <span>?? ?? ??</span>
+                </div>
+                <div class="hud-card meta">
+                  <strong>?? ????</strong>
+                  <span>?? ??</span>
+                </div>
               </div>
-              <div class="session-location" id="city-location">파리의 작은 관광지</div>
-              <div class="city-copy">
-                <h3>장면은 조용히 바뀌고,<br>집중은 이어집니다.</h3>
-                <p>관광지는 행동보다 배경 변화가 핵심입니다. 각 여행지는 페이지를 열 때마다 랜덤으로 바뀝니다.</p>
-              </div>
-
-              <button class="screen-hotspot city-next-hit" type="button" data-target="food" aria-label="음식점 화면으로 이동"></button>
-
+              <div class="session-location" id="city-location">??? ?? ???</div>
+              <button class="screen-hotspot city-next-hit" type="button" data-target="food" aria-label="??? ???? ??"></button>
               <div class="city-actions">
                 <div class="session-chip">
-                  <strong>현재 흐름</strong>
+                  <strong>??? ??</strong>
+                  <p>??? ??? ????, ??? ?? ??? ?? ???? ?????.</p>
                   <div class="session-tag-row">
-                    <div class="session-tag active">관광지</div>
-                    <div class="session-tag">다음: 음식점</div>
-                    <div class="session-tag">랜덤 배경</div>
+                    <div class="session-tag active">?? ????</div>
+                    <div class="session-tag">???</div>
+                    <div class="session-tag">??????</div>
+                    <div class="session-tag">?? ??</div>
+                  </div>
+                  <div class="session-volume-row">
+                    <div class="session-volume-icon" aria-hidden="true"></div>
+                    <div class="session-volume"></div>
                   </div>
                 </div>
               </div>
@@ -1055,26 +1060,31 @@
 
             <section class="app-screen food-screen" data-screen="food">
               <div class="status-bar"></div>
-
-              <div class="food-timer">
-                <strong>03:18:44</strong>
-                <span>현재 세션</span>
+              <div class="session-hud">
+                <div class="hud-card">
+                  <strong>03:18:44</strong>
+                  <span>?? ?? ??</span>
+                </div>
+                <div class="hud-card meta">
+                  <strong>?? ?? ??</strong>
+                  <span>?? ??</span>
+                </div>
               </div>
-              <div class="session-location" id="food-location">베트남의 작은 식당</div>
-              <div class="food-copy">
-                <h3>중간에 잠시 머물며,<br>리듬을 바꿉니다.</h3>
-                <p>음식점 장면은 캐릭터의 여행 리듬을 보여주는 전환 구간입니다. 식당 배경도 랜덤으로 교체됩니다.</p>
-              </div>
-
-              <button class="screen-hotspot city-next-hit" type="button" data-target="stay" aria-label="숙박 화면으로 이동"></button>
-
+              <div class="session-location" id="food-location">???? ?? ??</div>
+              <button class="screen-hotspot city-next-hit" type="button" data-target="stay" aria-label="?? ???? ??"></button>
               <div class="food-actions">
                 <div class="session-chip">
-                  <strong>현재 흐름</strong>
+                  <strong>??? ??</strong>
+                  <p>??? ????? ??? ???? ?? ???? ?? ? ????.</p>
                   <div class="session-tag-row">
-                    <div class="session-tag active">음식점</div>
-                    <div class="session-tag">다음: 숙소</div>
-                    <div class="session-tag">랜덤 배경</div>
+                    <div class="session-tag active">?? ?? ??</div>
+                    <div class="session-tag">???</div>
+                    <div class="session-tag">??????</div>
+                    <div class="session-tag">?? ??</div>
+                  </div>
+                  <div class="session-volume-row">
+                    <div class="session-volume-icon" aria-hidden="true"></div>
+                    <div class="session-volume"></div>
                   </div>
                 </div>
               </div>
@@ -1082,26 +1092,31 @@
 
             <section class="app-screen stay-screen" data-screen="stay">
               <div class="status-bar"></div>
-
-              <div class="stay-timer">
-                <strong>00:43:12</strong>
-                <span>마지막 구간</span>
+              <div class="session-hud">
+                <div class="hud-card">
+                  <strong>00:43:12</strong>
+                  <span>?? ?? ??</span>
+                </div>
+                <div class="hud-card meta">
+                  <strong>?? ????</strong>
+                  <span>?? ??</span>
+                </div>
               </div>
-              <div class="session-location" id="stay-location">오늘의 숙소</div>
-              <div class="stay-copy">
-                <h3>마지막은 숙소에서,<br>조용히 마무리합니다.</h3>
-                <p>모든 캐릭터의 마지막 15%는 숙소 구간으로 고정됩니다. 숙소 등급에 따라 다른 공간 분위기를 보여줍니다.</p>
-              </div>
-
-              <button class="screen-hotspot city-next-hit" type="button" data-target="finish" aria-label="종료 화면으로 이동"></button>
-
+              <div class="session-location" id="stay-location">??? ??</div>
+              <button class="screen-hotspot city-next-hit" type="button" data-target="finish" aria-label="?? ???? ??"></button>
               <div class="stay-actions">
                 <div class="session-chip">
-                  <strong>현재 흐름</strong>
+                  <strong>??? ??</strong>
+                  <p>?? ????? ?? ??? ???? ?????? ??? ?? ??? ?????.</p>
                   <div class="session-tag-row">
-                    <div class="session-tag active">숙소</div>
-                    <div class="session-tag">다음: 종료</div>
-                    <div class="session-tag">랜덤 배경</div>
+                    <div class="session-tag active">?? ????</div>
+                    <div class="session-tag">???</div>
+                    <div class="session-tag">??????</div>
+                    <div class="session-tag">?? ??</div>
+                  </div>
+                  <div class="session-volume-row">
+                    <div class="session-volume-icon" aria-hidden="true"></div>
+                    <div class="session-volume"></div>
                   </div>
                 </div>
               </div>
@@ -1332,3 +1347,4 @@
   </script>
 </body>
 </html>
+
