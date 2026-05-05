@@ -6,20 +6,26 @@
   <title>집중 여행 서비스 목업</title>
   <style>
     :root {
-      --bg-top: #211b36;
-      --bg-mid: #4c3a63;
-      --bg-bottom: #f0ddd2;
-      --panel: rgba(255, 248, 252, 0.14);
-      --panel-strong: rgba(255, 247, 252, 0.18);
-      --line: rgba(255, 255, 255, 0.18);
-      --text: #fff7fb;
-      --muted: rgba(255, 243, 250, 0.74);
-      --ink: #332843;
-      --shadow: 0 28px 60px rgba(20, 10, 34, 0.34);
-      --card-bg: rgba(245, 236, 245, 0.24);
-      --card-border: rgba(255, 255, 255, 0.16);
-      --card-active: rgba(255, 230, 220, 0.26);
-      --cta-bg: linear-gradient(90deg, rgba(130, 112, 151, 0.5), rgba(204, 166, 188, 0.42));
+      --bg-top: #edf6ff;
+      --bg-mid: #f6f0e7;
+      --bg-bottom: #f3e2d4;
+      --panel: rgba(255, 255, 255, 0.72);
+      --panel-strong: rgba(255, 255, 255, 0.88);
+      --line: rgba(0, 0, 0, 0.08);
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --ink: #1d1d1f;
+      --shadow: 0 28px 60px rgba(24, 18, 12, 0.12);
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --card-border: rgba(0, 0, 0, 0.06);
+      --card-active: rgba(0, 102, 204, 0.08);
+      --cta-bg: #0066cc;
+      --cta-text: #ffffff;
+      --dark-surface: #272729;
+      --dark-line: rgba(255, 255, 255, 0.12);
+      --dark-text: #ffffff;
+      --dark-muted: rgba(255, 255, 255, 0.78);
+      --image-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0;
     }
 
     * {
@@ -29,11 +35,11 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: "Segoe UI", "Apple SD Gothic Neo", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top, rgba(255, 176, 148, 0.24), transparent 26%),
-        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 34%, #9a7687 72%, var(--bg-bottom) 100%);
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.82), transparent 24%),
+        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 42%, var(--bg-bottom) 100%);
     }
 
     .page {
@@ -43,7 +49,7 @@
     }
 
     .intro {
-      max-width: 900px;
+      max-width: 920px;
       margin-bottom: 28px;
       padding: 30px 32px;
       border-radius: 30px;
@@ -65,13 +71,15 @@
       margin: 0;
       font-size: clamp(34px, 5vw, 54px);
       line-height: 1.06;
+      letter-spacing: -0.03em;
+      font-weight: 600;
     }
 
     .intro p {
       margin: 14px 0 0;
       color: var(--muted);
-      line-height: 1.68;
-      font-size: 15px;
+      line-height: 1.6;
+      font-size: 16px;
     }
 
     .screens {
@@ -116,8 +124,8 @@
       margin: 0 auto;
       padding: 14px;
       border-radius: 44px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0.08));
-      box-shadow: 0 30px 80px rgba(15, 7, 28, 0.4);
+      background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(240,240,244,0.54));
+      box-shadow: 0 30px 80px rgba(24, 18, 12, 0.18);
     }
 
     .phone-screen,
@@ -133,7 +141,7 @@
     }
 
     .prototype-viewport {
-      background: #1b1527;
+      background: #ffffff;
       isolation: isolate;
     }
 
@@ -154,7 +162,7 @@
     }
 
     .home-screen {
-      background: url("./assets/main-ex-home-screen.png") center/cover no-repeat;
+      background: #ffffff;
     }
 
     .screen-hotspot {
@@ -193,8 +201,8 @@
       gap: 14px;
       padding: 14px 16px;
       border-radius: 22px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(255, 248, 252, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(14px);
     }
 
@@ -215,9 +223,9 @@
 
     .prototype-nav,
     .prototype-step {
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(255, 248, 252, 0.08);
-      color: #fff9fc;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--ink);
       border-radius: 18px;
       font: inherit;
       cursor: pointer;
@@ -246,13 +254,13 @@
       padding: 10px 14px;
       font-size: 13px;
       font-weight: 600;
-      color: rgba(255, 245, 249, 0.78);
+      color: var(--muted);
     }
 
     .prototype-step.is-active {
-      background: rgba(255, 230, 220, 0.18);
-      border-color: rgba(255, 224, 210, 0.28);
-      color: #fffafc;
+      background: rgba(0, 102, 204, 0.08);
+      border-color: rgba(0, 102, 204, 0.16);
+      color: var(--ink);
     }
 
     .status-bar {
@@ -263,18 +271,93 @@
       height: 28px;
       transform: translateX(-50%);
       border-radius: 999px;
-      background: rgba(31, 19, 48, 0.66);
+      background: rgba(28, 28, 30, 0.88);
       border: 1px solid rgba(255, 255, 255, 0.08);
       z-index: 5;
     }
 
-    .time-screen::before {
+    .home-screen::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(19, 14, 33, 0.22) 0%, rgba(25, 16, 40, 0.34) 26%, rgba(49, 34, 65, 0.54) 62%, rgba(93, 67, 87, 0.52) 100%);
+        url("./assets/main-ex-home-screen.png") center top / cover no-repeat;
       z-index: 1;
+    }
+
+    .home-screen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.04) 48%, rgba(255,255,255,0.92) 100%);
+      z-index: 1;
+    }
+
+    .home-screen > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .home-story {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .home-story h3 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.04;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .home-story p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.54;
+    }
+
+    .home-cta-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .home-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      padding: 0 15px;
+      border-radius: 999px;
+      font-size: 14px;
+      line-height: 1;
+      font-weight: 400;
+    }
+
+    .home-pill.primary {
+      background: var(--cta-bg);
+      color: var(--cta-text);
+    }
+
+    .home-pill.secondary {
+      background: transparent;
+      color: var(--cta-bg);
+      border: 1px solid rgba(0, 102, 204, 0.26);
+    }
+
+    .time-screen {
+      background:
+        linear-gradient(180deg, #ffffff 0%, #fbfbfd 56%, #f3f3f6 100%);
     }
 
     .time-screen > * {
@@ -284,30 +367,34 @@
 
     .time-header {
       position: absolute;
-      top: 78px;
-      left: 24px;
-      right: 24px;
+      top: 68px;
+      left: 20px;
+      right: 20px;
+      text-align: center;
     }
 
     .time-header h3 {
       margin: 0;
-      font-size: 25px;
-      line-height: 1.24;
+      font-size: 28px;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+      color: var(--ink);
     }
 
     .time-header p {
-      margin: 10px 0 0;
-      color: rgba(255, 242, 249, 0.74);
-      font-size: 13px;
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
       line-height: 1.5;
     }
 
     .trip-list {
       position: absolute;
-      left: 22px;
-      right: 22px;
-      top: 170px;
-      bottom: 132px;
+      left: 18px;
+      right: 18px;
+      top: 162px;
+      bottom: 98px;
       display: grid;
       gap: 10px;
       align-content: start;
@@ -319,67 +406,67 @@
       grid-template-columns: 1fr auto;
       gap: 12px;
       align-items: center;
-      padding: 15px 16px;
-      border-radius: 20px;
+      padding: 14px 16px;
+      border-radius: 18px;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      backdrop-filter: blur(10px);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
     }
 
     .trip-card.active {
       background: var(--card-active);
-      border-color: rgba(255, 224, 210, 0.44);
-      box-shadow: 0 10px 24px rgba(34, 17, 48, 0.14), inset 0 1px 0 rgba(255,255,255,0.12);
+      border-color: rgba(0, 102, 204, 0.16);
+      box-shadow: 0 10px 24px rgba(0, 102, 204, 0.08);
     }
 
     .trip-card strong {
       display: block;
       margin-bottom: 4px;
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.3;
+      color: var(--ink);
     }
 
     .trip-card span {
-      color: rgba(255, 241, 247, 0.72);
+      color: var(--muted);
       font-size: 12px;
     }
 
     .trip-time {
       padding: 8px 10px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.12);
-      color: #fff8fc;
+      background: var(--paper);
+      color: var(--ink);
       font-size: 12px;
       white-space: nowrap;
     }
 
     .trip-card.active .trip-time {
-      background: rgba(255,255,255,0.18);
+      background: rgba(0, 102, 204, 0.12);
+      color: var(--cta-bg);
     }
 
     .time-cta {
       position: absolute;
-      left: 46px;
-      right: 46px;
-      bottom: 36px;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 18px 20px;
-      border-radius: 22px;
+      padding: 16px 20px;
+      border-radius: 999px;
       background: var(--cta-bg);
-      color: #fffafc;
-      font-weight: 700;
+      color: var(--cta-text);
+      font-weight: 400;
       font-size: 17px;
-      border: 1px solid rgba(255,255,255,0.16);
-      backdrop-filter: blur(14px);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12), 0 12px 28px rgba(30, 15, 44, 0.18);
+      border: 0;
+      box-shadow: 0 14px 30px rgba(0, 102, 204, 0.24);
       cursor: pointer;
     }
 
     .session-screen {
-      background: url("./assets/airplane-session-scene.png") center/cover no-repeat;
+      background: var(--dark-surface);
     }
 
     .session-screen::before {
@@ -387,7 +474,16 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(10, 8, 20, 0.08), rgba(10, 8, 20, 0.02) 16%, rgba(24, 16, 35, 0.14) 100%);
+        url("./assets/airplane-scene-user.png") center/cover no-repeat;
+      opacity: 0.9;
+      z-index: 1;
+    }
+
+    .session-screen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.22) 52%, rgba(0,0,0,0.48) 100%);
       z-index: 1;
     }
 
@@ -398,115 +494,276 @@
 
     .session-timer {
       position: absolute;
-      top: 72px;
-      left: 24px;
+      top: 44px;
+      left: 14px;
       padding: 12px 14px;
-      border-radius: 18px;
-      background: rgba(255, 246, 252, 0.14);
-      border: 1px solid rgba(255,255,255,0.16);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 12px 26px rgba(18, 10, 31, 0.18);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
     .session-timer strong {
       display: block;
-      font-size: 24px;
+      font-size: 18px;
       line-height: 1;
+      color: var(--ink);
     }
 
     .session-timer span {
       display: block;
-      margin-top: 6px;
-      color: rgba(255, 243, 248, 0.72);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .session-location {
+      position: absolute;
+      top: 48px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 12px;
+      color: var(--ink);
+      z-index: 3;
+      white-space: nowrap;
+    }
+
+    .session-copy {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      top: 96px;
+      z-index: 3;
+    }
+
+    .session-copy h3 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+      color: var(--dark-text);
+    }
+
+    .session-copy p {
+      margin: 8px 0 0;
+      color: var(--dark-muted);
+      font-size: 14px;
+      line-height: 1.52;
     }
 
     .session-actions {
       position: absolute;
-      left: 26px;
-      right: 26px;
-      bottom: 36px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      left: 14px;
+      right: 14px;
+      bottom: 16px;
+      display: block;
     }
 
     .session-chip {
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(255, 245, 251, 0.12);
-      border: 1px solid rgba(255,255,255,0.14);
-      text-align: center;
-      color: rgba(255, 245, 249, 0.88);
+      padding: 14px 14px 16px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.92);
+      text-align: left;
+      color: var(--ink);
       font-size: 13px;
-      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
 
-    .city-screen {
-      background: url("./assets/eiffel-main-session-scene.png") center/cover no-repeat;
+    .session-chip strong {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
     }
 
-    .city-screen::before {
+    .session-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .session-tag {
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: var(--paper);
+      font-size: 12px;
+      color: var(--ink);
+    }
+
+    .session-tag.active {
+      background: rgba(0, 102, 204, 0.12);
+      color: var(--cta-bg);
+    }
+
+    .city-screen,
+    .food-screen,
+    .stay-screen {
+      background: var(--dark-surface);
+    }
+
+    .city-screen::before,
+    .food-screen::before,
+    .stay-screen::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(15, 12, 27, 0.06), rgba(18, 13, 30, 0.08) 34%, rgba(18, 13, 30, 0.16) 100%);
+      background: var(--scene-image) center/cover no-repeat;
+      opacity: 0.9;
       z-index: 1;
     }
 
-    .city-screen > * {
+    .city-screen::after,
+    .food-screen::after,
+    .stay-screen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.22) 52%, rgba(0,0,0,0.48) 100%);
+      z-index: 1;
+    }
+
+    .city-screen > *,
+    .food-screen > *,
+    .stay-screen > * {
       position: relative;
       z-index: 2;
     }
 
     .city-timer {
       position: absolute;
-      top: 72px;
-      left: 24px;
+      top: 44px;
+      left: 14px;
       padding: 12px 14px;
-      border-radius: 18px;
-      background: rgba(255, 246, 252, 0.14);
-      border: 1px solid rgba(255,255,255,0.16);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 12px 26px rgba(18, 10, 31, 0.18);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
     .city-timer strong {
       display: block;
-      font-size: 24px;
+      font-size: 18px;
       line-height: 1;
+      color: var(--ink);
     }
 
     .city-timer span {
       display: block;
-      margin-top: 6px;
-      color: rgba(255, 243, 248, 0.72);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .city-copy {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      top: 96px;
+      z-index: 3;
+    }
+
+    .city-copy h3 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+      color: var(--dark-text);
+    }
+
+    .city-copy p {
+      margin: 8px 0 0;
+      color: var(--dark-muted);
+      font-size: 14px;
+      line-height: 1.52;
     }
 
     .city-actions {
       position: absolute;
-      left: 26px;
-      right: 26px;
-      bottom: 32px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      left: 14px;
+      right: 14px;
+      bottom: 16px;
+      display: block;
+    }
+
+    .food-copy,
+    .stay-copy {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      top: 96px;
+      z-index: 3;
+    }
+
+    .food-copy h3,
+    .stay-copy h3 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+      color: var(--dark-text);
+    }
+
+    .food-copy p,
+    .stay-copy p {
+      margin: 8px 0 0;
+      color: var(--dark-muted);
+      font-size: 14px;
+      line-height: 1.52;
+    }
+
+    .food-timer,
+    .stay-timer {
+      position: absolute;
+      top: 44px;
+      left: 14px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .food-timer strong,
+    .stay-timer strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .food-timer span,
+    .stay-timer span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .food-actions,
+    .stay-actions {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 16px;
+      display: block;
     }
 
     .finish-screen {
-      background: url("./assets/ending-screen-scene.png") center/cover no-repeat;
+      background: linear-gradient(180deg, #f5f5f7 0%, #efe8df 100%);
     }
 
     .finish-screen::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(17, 13, 28, 0.16), rgba(17, 13, 28, 0.08) 24%, rgba(255, 255, 255, 0.06) 100%);
+      background: url("./assets/ending-my-room.png") center/cover no-repeat;
+      opacity: 0.22;
       z-index: 1;
     }
 
@@ -517,7 +774,7 @@
 
     .finish-wrap {
       position: absolute;
-      inset: 96px 28px 52px;
+      inset: 120px 22px 28px;
       display: grid;
       grid-template-rows: 1fr auto;
       gap: 22px;
@@ -527,30 +784,28 @@
       align-self: center;
       padding: 28px 24px 30px;
       border-radius: 30px;
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      background: rgba(255, 247, 251, 0.04);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 12px 24px rgba(20, 11, 34, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 12px 24px rgba(24, 18, 12, 0.08);
       text-align: center;
     }
 
     .finish-time {
       display: block;
-      color: #fff7ea;
-      font-size: clamp(42px, 8vw, 58px);
-      font-weight: 700;
+      color: var(--ink);
+      font-size: clamp(40px, 8vw, 54px);
+      font-weight: 600;
       line-height: 1;
-      text-shadow: 0 4px 18px rgba(32, 18, 36, 0.28);
+      letter-spacing: -0.03em;
     }
 
     .finish-caption {
       display: block;
-      margin-top: 24px;
-      color: rgba(255, 244, 228, 0.94);
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      text-shadow: 0 3px 14px rgba(32, 18, 36, 0.22);
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0;
     }
 
     .finish-actions {
@@ -565,20 +820,19 @@
       justify-content: center;
       min-height: 56px;
       border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      background: rgba(255, 247, 252, 0.04);
-      color: #fff7ec;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--ink);
       font-size: 15px;
-      font-weight: 700;
-      backdrop-filter: blur(14px);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
-      text-shadow: 0 2px 10px rgba(30, 16, 34, 0.16);
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(24, 18, 12, 0.06);
       cursor: pointer;
     }
 
     .finish-button.primary {
-      background: linear-gradient(180deg, rgba(255, 218, 198, 0.1), rgba(225, 184, 205, 0.08));
-      border-color: rgba(255, 235, 229, 0.1);
+      background: var(--cta-bg);
+      border-color: var(--cta-bg);
+      color: var(--cta-text);
     }
 
     .notes {
@@ -606,7 +860,7 @@
       padding: 16px 18px;
       border-radius: 20px;
       background: var(--panel-strong);
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(0,0,0,0.06);
     }
 
     .note strong {
@@ -633,8 +887,8 @@
   <main class="page">
     <section class="intro">
       <p class="eyebrow">Concentration Travel Mockup</p>
-      <h1>홈 화면과 시간 선택 화면을 한 흐름으로 정리한 1차 시안</h1>
-      <p>홈 화면은 최종 확정한 이미지 시안을 그대로 사용하고, 다음 단계인 시간 선택 화면은 같은 공항 무드를 유지한 채 카드 리스트만 얹는 방식으로 구성했습니다. 사용자는 동행을 고른 뒤 바로 여행 길이를 선택하고, 마지막에 `출국하기`로 세션을 시작하게 됩니다.</p>
+      <h1>애플 제품 발표형 톤을 적용한 실제 앱 화면 시안</h1>
+      <p>지금까지 확정한 앱 구조를 유지한 채, 실제 화면 톤만 애플식으로 재해석했습니다. 첫 진입 화면은 감정적 진입을 먼저 만들고, 시간 선택과 세션 진행 화면은 더 정제된 정보 밀도와 제품 중심의 구도로 정리했습니다.</p>
     </section>
 
     <section class="screens">
@@ -647,6 +901,14 @@
           <div class="prototype-viewport">
             <section class="app-screen home-screen is-active" data-screen="home">
               <div class="status-bar"></div>
+              <div class="home-story">
+                <h3>누구와 여행을 떠날까요?</h3>
+                <p>함께 여행할 친구를 선택하고, 집중이 시작되는 순간을 여행의 출발처럼 느끼도록 설계한 첫 화면입니다.</p>
+                <div class="home-cta-row">
+                  <div class="home-pill primary">친구 선택</div>
+                  <div class="home-pill secondary">세계관 보기</div>
+                </div>
+              </div>
               <button class="screen-hotspot home-next-hit" type="button" data-target="time" aria-label="시간 선택 화면으로 이동"></button>
             </section>
 
@@ -654,63 +916,49 @@
               <div class="status-bar"></div>
 
               <section class="time-header">
-                <h3>떠나고 싶은 시간을 선택해주세요</h3>
-                <p>여행 거리를 고르듯 오늘의 집중 길이를 선택합니다.</p>
+                <h3>어디로 떠날까요?</h3>
+                <p>집중 시간을 숫자가 아닌 여행 거리처럼 선택합니다.</p>
               </section>
 
               <section class="trip-list">
                 <div class="trip-card">
                   <div>
-                    <strong>제주도 여행</strong>
-                    <span>가볍게 다녀오는 짧은 집중 여행</span>
+                    <strong>국내여행</strong>
+                    <span>짧고 단단하게 집중하는 가장 가벼운 출발</span>
                   </div>
                   <div class="trip-time">1시간</div>
                 </div>
                 <div class="trip-card">
                   <div>
-                    <strong>일본/중국 여행</strong>
-                    <span>짧지만 분명한 리듬으로 떠나는 코스</span>
+                    <strong>아시아 여행</strong>
+                    <span>가볍게 몰입하는 흐름으로 이어지는 세션</span>
                   </div>
                   <div class="trip-time">2시간</div>
                 </div>
                 <div class="trip-card">
                   <div>
-                    <strong>동남아 여행</strong>
-                    <span>한참 머무르는 느낌으로 이어지는 선택</span>
+                    <strong>유럽 여행</strong>
+                    <span>풍경이 길어지는 중간 길이의 집중 여정</span>
                   </div>
                   <div class="trip-time">3시간</div>
                 </div>
                 <div class="trip-card">
                   <div>
-                    <strong>호주 여행</strong>
-                    <span>조금 더 멀리 떠나는 긴 흐름의 집중</span>
+                    <strong>미국 여행</strong>
+                    <span>깊게 들어가는 긴 리듬의 집중 여행</span>
                   </div>
                   <div class="trip-time">4시간</div>
                 </div>
                 <div class="trip-card active">
                   <div>
-                    <strong>미국 여행</strong>
-                    <span>오늘은 길게 몰입하고 싶을 때 고르는 옵션</span>
+                    <strong>남극 여행</strong>
+                    <span>가장 길고 조용하게 몰입하는 최대 여정</span>
                   </div>
                   <div class="trip-time">5시간</div>
                 </div>
-                <div class="trip-card">
-                  <div>
-                    <strong>유럽 여행</strong>
-                    <span>하루를 통째로 빌려 떠나는 긴 여정</span>
-                  </div>
-                  <div class="trip-time">6시간</div>
-                </div>
-                <div class="trip-card">
-                  <div>
-                    <strong>남극 여행</strong>
-                    <span>가장 멀리, 가장 오래 머무는 극한의 여행</span>
-                  </div>
-                  <div class="trip-time">7시간</div>
-                </div>
               </section>
 
-              <button class="time-cta" type="button" data-target="session">출국하기</button>
+              <button class="time-cta" type="button" data-target="session">떠나볼까요?</button>
             </section>
 
             <section class="app-screen session-screen" data-screen="session">
@@ -718,14 +966,26 @@
 
               <div class="session-timer">
                 <strong>04:58:12</strong>
-                <span>remaining time</span>
+                <span>기내 소음</span>
+              </div>
+              <div class="session-location">다낭으로 향하는 비행기 안</div>
+              <div class="session-copy">
+                <h3>도착할 때까지,<br>조용히 집중합니다.</h3>
+                <p>공간 기반 화이트노이즈와 시네마형 화면으로 여행의 리듬을 따라가는 첫 세션 장면입니다.</p>
               </div>
 
-              <button class="screen-hotspot session-next-hit" type="button" data-target="city" aria-label="메인 세션 화면으로 이동"></button>
+              <button class="screen-hotspot session-next-hit" type="button" data-target="city" aria-label="관광지 화면으로 이동"></button>
 
               <div class="session-actions">
-                <div class="session-chip">소리</div>
-                <div class="session-chip">중단</div>
+                <div class="session-chip">
+                  <strong>사운드 변경</strong>
+                  <div class="session-tag-row">
+                    <div class="session-tag active">기내 소음</div>
+                    <div class="session-tag">빗소리</div>
+                    <div class="session-tag">화이트노이즈</div>
+                    <div class="session-tag">자동 전환</div>
+                  </div>
+                </div>
               </div>
             </section>
 
@@ -734,14 +994,79 @@
 
               <div class="city-timer">
                 <strong>04:21:08</strong>
-                <span>remaining time</span>
+                <span>현재 세션</span>
+              </div>
+              <div class="session-location" id="city-location">파리의 작은 관광지</div>
+              <div class="city-copy">
+                <h3>장면은 조용히 바뀌고,<br>집중은 이어집니다.</h3>
+                <p>관광지는 행동보다 배경 변화가 핵심입니다. 각 여행지는 페이지를 열 때마다 랜덤으로 바뀝니다.</p>
+              </div>
+
+              <button class="screen-hotspot city-next-hit" type="button" data-target="food" aria-label="음식점 화면으로 이동"></button>
+
+              <div class="city-actions">
+                <div class="session-chip">
+                  <strong>현재 흐름</strong>
+                  <div class="session-tag-row">
+                    <div class="session-tag active">관광지</div>
+                    <div class="session-tag">다음: 음식점</div>
+                    <div class="session-tag">랜덤 배경</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="app-screen food-screen" data-screen="food">
+              <div class="status-bar"></div>
+
+              <div class="food-timer">
+                <strong>03:18:44</strong>
+                <span>현재 세션</span>
+              </div>
+              <div class="session-location" id="food-location">베트남의 작은 식당</div>
+              <div class="food-copy">
+                <h3>중간에 잠시 머물며,<br>리듬을 바꿉니다.</h3>
+                <p>음식점 장면은 캐릭터의 여행 리듬을 보여주는 전환 구간입니다. 식당 배경도 랜덤으로 교체됩니다.</p>
+              </div>
+
+              <button class="screen-hotspot city-next-hit" type="button" data-target="stay" aria-label="숙박 화면으로 이동"></button>
+
+              <div class="food-actions">
+                <div class="session-chip">
+                  <strong>현재 흐름</strong>
+                  <div class="session-tag-row">
+                    <div class="session-tag active">음식점</div>
+                    <div class="session-tag">다음: 숙소</div>
+                    <div class="session-tag">랜덤 배경</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="app-screen stay-screen" data-screen="stay">
+              <div class="status-bar"></div>
+
+              <div class="stay-timer">
+                <strong>00:43:12</strong>
+                <span>마지막 구간</span>
+              </div>
+              <div class="session-location" id="stay-location">오늘의 숙소</div>
+              <div class="stay-copy">
+                <h3>마지막은 숙소에서,<br>조용히 마무리합니다.</h3>
+                <p>모든 캐릭터의 마지막 15%는 숙소 구간으로 고정됩니다. 숙소 등급에 따라 다른 공간 분위기를 보여줍니다.</p>
               </div>
 
               <button class="screen-hotspot city-next-hit" type="button" data-target="finish" aria-label="종료 화면으로 이동"></button>
 
-              <div class="city-actions">
-                <div class="session-chip">소리</div>
-                <div class="session-chip">중단</div>
+              <div class="stay-actions">
+                <div class="session-chip">
+                  <strong>현재 흐름</strong>
+                  <div class="session-tag-row">
+                    <div class="session-tag active">숙소</div>
+                    <div class="session-tag">다음: 종료</div>
+                    <div class="session-tag">랜덤 배경</div>
+                  </div>
+                </div>
               </div>
             </section>
 
@@ -751,11 +1076,11 @@
               <div class="finish-wrap">
                 <div class="finish-card">
                   <strong class="finish-time">4시간 12분</strong>
-                  <span class="finish-caption">집중 달성!!</span>
+                  <span class="finish-caption">목적지에 도착했어요.</span>
                 </div>
 
                 <div class="finish-actions">
-                  <button class="finish-button" type="button" data-target="home">닫기</button>
+                  <button class="finish-button" type="button" data-target="home">첫 화면으로</button>
                   <button class="finish-button primary" type="button" data-target="time">다시 떠나기</button>
                 </div>
               </div>
@@ -766,7 +1091,7 @@
         <div class="prototype-footer">
           <div class="prototype-status">
             <strong id="prototype-title">홈 화면</strong>
-            <span id="prototype-caption">CTA를 누르면 시간 선택 화면으로 이동합니다.</span>
+            <span id="prototype-caption">감정적 진입을 먼저 만드는 애플 제품 발표형 첫 화면입니다.</span>
           </div>
 
           <div class="prototype-controls">
@@ -779,6 +1104,8 @@
             <button class="prototype-step" type="button" data-target="time">시간 선택</button>
             <button class="prototype-step" type="button" data-target="session">비행기</button>
             <button class="prototype-step" type="button" data-target="city">관광지</button>
+            <button class="prototype-step" type="button" data-target="food">음식점</button>
+            <button class="prototype-step" type="button" data-target="stay">숙박</button>
             <button class="prototype-step" type="button" data-target="finish">종료</button>
           </div>
         </div>
@@ -789,46 +1116,58 @@
       <h2>이번 반영 내용</h2>
       <div class="notes-grid">
         <div class="note">
-          <strong>홈 화면 고정</strong>
-          <span>최종 확정한 CTA와 GNB가 들어간 이미지 시안을 그대로 사용합니다.</span>
+          <strong>애플식 톤 적용</strong>
+          <span>복잡한 장식 대신 큰 헤드라인, 작은 파란 CTA, 밝은 카드와 다크 세션 구도로 재정리했습니다.</span>
         </div>
         <div class="note">
-          <strong>시간 선택 톤 정리</strong>
-          <span>타이머 설정이 아니라 여행 길이를 고르는 느낌으로 카드를 구성했습니다.</span>
+          <strong>첫 진입 화면 개편</strong>
+          <span>공항 메인 이미지를 유지하되, 하단 정보 카드를 통해 감정적 진입과 CTA를 먼저 보여줍니다.</span>
         </div>
         <div class="note">
-          <strong>스크롤 리스트 구조</strong>
-          <span>1시간부터 7시간까지 감성적인 여행 이름과 실제 시간을 함께 보여줍니다.</span>
+          <strong>시간 선택 구조 정리</strong>
+          <span>여행 거리 기반 시간 선택을 애플식 정보 밀도로 축약하고, CTA를 더 명확하게 정리했습니다.</span>
+        </div>
+        <div class="note">
+          <strong>랜덤 배경 구조 반영</strong>
+          <span>관광지, 음식점, 숙박 구간은 지정한 여러 장의 이미지 중 랜덤으로 노출되도록 설계했습니다.</span>
         </div>
         <div class="note">
           <strong>다음 연결점</strong>
-          <span>이제 한 화면씩 넘겨볼 수 있는 전환형 프로토타입으로 바뀌었고, 다음은 실제 앱 전환과 상태 로직을 붙이는 단계입니다.</span>
+          <span>이제 이 톤을 기준으로 종료 화면, 메인 허브, 그리고 실제 서비스 화면 전반의 디자인 통일성을 맞추는 단계로 넘어갈 수 있습니다.</span>
         </div>
       </div>
     </section>
   </main>
   <script>
-    const screenOrder = ["home", "time", "session", "city", "finish"];
+    const screenOrder = ["home", "time", "session", "city", "food", "stay", "finish"];
     const screenMeta = {
       home: {
         title: "홈 화면",
-        caption: "CTA를 누르면 시간 선택 화면으로 이동합니다."
+        caption: "감정적 진입을 먼저 만드는 첫 화면에서 시간 선택 화면으로 이어집니다."
       },
       time: {
         title: "시간 선택 화면",
-        caption: "출국하기를 누르면 비행기 세션 시작 화면으로 이어집니다."
+        caption: "여행 거리처럼 시간을 고른 뒤 떠나볼까요 버튼으로 세션을 시작합니다."
       },
       session: {
         title: "비행기 세션 시작 화면",
-        caption: "비행기 장면을 탭하거나 다음 버튼으로 관광지 화면으로 이동합니다."
+        caption: "기내 장면과 사운드 패널을 확인한 뒤 다음 장면으로 이어집니다."
       },
       city: {
-        title: "메인 세션 화면",
-        caption: "관광지 장면을 탭하거나 다음 버튼으로 종료 화면을 확인합니다."
+        title: "관광지 화면",
+        caption: "관광지 구간은 랜덤 배경 중심으로 보여주고, 다음은 음식점 화면으로 이어집니다."
+      },
+      food: {
+        title: "음식점 화면",
+        caption: "음식점 구간도 랜덤 배경으로 보여주며, 다음은 숙소 화면으로 이어집니다."
+      },
+      stay: {
+        title: "숙박 화면",
+        caption: "마지막 15% 숙소 구간을 보여주고, 종료 화면으로 이동합니다."
       },
       finish: {
         title: "종료 화면",
-        caption: "닫기는 홈으로, 다시 떠나기는 시간 선택 화면으로 연결됩니다."
+        caption: "첫 화면으로 돌아가거나 같은 구조로 다시 세션을 시작할 수 있습니다."
       }
     };
 
@@ -839,8 +1178,73 @@
     const captionNode = document.getElementById("prototype-caption");
     const stepButtons = Array.from(document.querySelectorAll(".prototype-step"));
     const targetButtons = Array.from(document.querySelectorAll("[data-target]"));
+    const cityScreen = document.querySelector('[data-screen="city"]');
+    const foodScreen = document.querySelector('[data-screen="food"]');
+    const stayScreen = document.querySelector('[data-screen="stay"]');
+    const cityLocation = document.getElementById("city-location");
+    const foodLocation = document.getElementById("food-location");
+    const stayLocation = document.getElementById("stay-location");
+
+    const randomBackgroundPools = {
+      city: [
+        {
+          image: './assets/tour-gyeongbokgung.png',
+          label: '서울의 경복궁'
+        },
+        {
+          image: './assets/tour-statue-of-liberty.png',
+          label: '뉴욕의 자유의 여신상'
+        },
+        {
+          image: './assets/tour-iceland.png',
+          label: '아이슬란드의 풍경'
+        }
+      ],
+      food: [
+        {
+          image: './assets/food-vietnam.png',
+          label: '베트남의 작은 식당'
+        },
+        {
+          image: './assets/food-europe.png',
+          label: '유럽의 조용한 식당'
+        }
+      ],
+      stay: [
+        {
+          image: './assets/stay-five-star-hotel.png',
+          label: '5성 호텔'
+        },
+        {
+          image: './assets/stay-dormitory.png',
+          label: '도미토리'
+        },
+        {
+          image: './assets/stay-tent.png',
+          label: '텐트 숙소'
+        }
+      ]
+    };
 
     let activeScreen = "home";
+
+    function applyRandomScene(screenNode, scene) {
+      screenNode.style.setProperty('--scene-image', `url("${scene.image}")`);
+    }
+
+    function initializeRandomScenes() {
+      const cityScene = randomBackgroundPools.city[Math.floor(Math.random() * randomBackgroundPools.city.length)];
+      const foodScene = randomBackgroundPools.food[Math.floor(Math.random() * randomBackgroundPools.food.length)];
+      const stayScene = randomBackgroundPools.stay[Math.floor(Math.random() * randomBackgroundPools.stay.length)];
+
+      applyRandomScene(cityScreen, cityScene);
+      applyRandomScene(foodScreen, foodScene);
+      applyRandomScene(stayScreen, stayScene);
+
+      cityLocation.textContent = cityScene.label;
+      foodLocation.textContent = foodScene.label;
+      stayLocation.textContent = stayScene.label;
+    }
 
     function setScreen(target) {
       if (!screenOrder.includes(target)) return;
@@ -886,6 +1290,7 @@
       }
     });
 
+    initializeRandomScenes();
     setScreen(activeScreen);
   </script>
 </body>
