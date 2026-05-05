@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>집중 여행 서비스 목업</title>
+  <link href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" rel="stylesheet" type="text/css">
   <style>
     :root {
       --bg-top: #edf6ff;
@@ -36,7 +37,8 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      font-family: "Spoqa Han Sans Neo", -apple-system, BlinkMacSystemFont,
+        "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
       color: var(--text);
       background:
         radial-gradient(circle at top, rgba(255, 255, 255, 0.82), transparent 24%),
@@ -290,7 +292,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.04) 48%, rgba(255,255,255,0.92) 100%);
+      background: linear-gradient(180deg, rgba(11, 14, 20, 0.02), rgba(11, 14, 20, 0.08) 50%, rgba(11, 14, 20, 0.3) 100%);
       z-index: 1;
     }
 
@@ -304,56 +306,28 @@
       left: 18px;
       right: 18px;
       bottom: 18px;
-      padding: 18px;
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.94);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(16px) saturate(150%);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
     }
 
     .home-story h3 {
       margin: 0;
-      font-size: 30px;
-      line-height: 1.04;
-      letter-spacing: -0.02em;
-      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.35;
+      letter-spacing: -0.18px;
+      font-weight: 500;
       color: var(--ink);
     }
 
-    .home-story p {
-      margin: 10px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.54;
-    }
-
-    .home-cta-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-    }
-
-    .home-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 36px;
-      padding: 0 15px;
-      border-radius: 999px;
-      font-size: 14px;
-      line-height: 1;
-      font-weight: 400;
-    }
-
-    .home-pill.primary {
-      background: var(--cta-bg);
-      color: var(--cta-text);
-    }
-
-    .home-pill.secondary {
-      background: transparent;
-      color: var(--cta-bg);
-      border: 1px solid rgba(0, 102, 204, 0.26);
+    .home-story-copy {
+      min-width: 0;
+      text-align: center;
     }
 
     .time-screen {
@@ -786,7 +760,7 @@
     }
 
     .finish-screen {
-      background: linear-gradient(180deg, #f5f5f7 0%, #efe8df 100%);
+      background: #000000;
     }
 
     .finish-screen::before {
@@ -794,7 +768,7 @@
       position: absolute;
       inset: 0;
       background: url("./assets/ending-my-room.png") center/cover no-repeat;
-      opacity: 0.22;
+      opacity: 1;
       z-index: 1;
     }
 
@@ -813,18 +787,21 @@
 
     .finish-card {
       align-self: center;
-      padding: 28px 24px 30px;
+      width: min(100%, 260px);
+      margin: 0 auto;
+      padding: 20px 18px 22px;
       border-radius: 30px;
       border: 1px solid rgba(0, 0, 0, 0.06);
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 12px 24px rgba(24, 18, 12, 0.08);
+      background: rgba(255, 255, 255, 0.56);
+      box-shadow: 0 10px 22px rgba(24, 18, 12, 0.06);
+      backdrop-filter: blur(16px) saturate(145%);
       text-align: center;
     }
 
     .finish-time {
       display: block;
       color: var(--ink);
-      font-size: clamp(40px, 8vw, 54px);
+      font-size: clamp(28px, 6vw, 38px);
       font-weight: 600;
       line-height: 1;
       letter-spacing: -0.03em;
@@ -832,11 +809,11 @@
 
     .finish-caption {
       display: block;
-      margin-top: 18px;
+      margin-top: 12px;
       color: var(--muted);
-      font-size: 16px;
+      font-size: 13px;
       font-weight: 400;
-      letter-spacing: 0;
+      letter-spacing: -0.08px;
     }
 
     .finish-actions {
@@ -933,11 +910,8 @@
             <section class="app-screen home-screen is-active" data-screen="home">
               <div class="status-bar"></div>
               <div class="home-story">
-                <h3>누구와 여행을 떠날까요?</h3>
-                <p>함께 여행할 친구를 선택하고, 집중이 시작되는 순간을 여행의 출발처럼 느끼도록 설계한 첫 화면입니다.</p>
-                <div class="home-cta-row">
-                  <div class="home-pill primary">친구 선택</div>
-                  <div class="home-pill secondary">세계관 보기</div>
+                <div class="home-story-copy">
+                  <h3>함께 떠나고 싶은 사람을 선택하세요</h3>
                 </div>
               </div>
               <button class="screen-hotspot home-next-hit" type="button" data-target="time" aria-label="시간 선택 화면으로 이동"></button>
@@ -1010,8 +984,8 @@
 
               <div class="session-actions">
                 <div class="session-chip">
-                  <strong>사운드 패널</strong>
-                  <p>현재 공간에 맞는 사운드를 자동으로 재생하고, 필요할 때만 짧게 바꿉니다.</p>
+                  <strong>소리 선택</strong>
+                  <p>듣고 싶은 소리를 선택해주세요</p>
                   <div class="session-tag-row">
                     <div class="session-tag active">기내 소음</div>
                     <div class="session-tag">빗소리</div>
@@ -1042,8 +1016,8 @@
               <button class="screen-hotspot city-next-hit" type="button" data-target="food" aria-label="??? ???? ??"></button>
               <div class="city-actions">
                 <div class="session-chip">
-                  <strong>??? ??</strong>
-                  <p>??? ??? ????, ??? ?? ??? ?? ???? ?????.</p>
+                  <strong>?? ??</strong>
+                  <p>?? ?? ??? ??????</p>
                   <div class="session-tag-row">
                     <div class="session-tag active">?? ????</div>
                     <div class="session-tag">???</div>
@@ -1074,8 +1048,8 @@
               <button class="screen-hotspot city-next-hit" type="button" data-target="stay" aria-label="?? ???? ??"></button>
               <div class="food-actions">
                 <div class="session-chip">
-                  <strong>??? ??</strong>
-                  <p>??? ????? ??? ???? ?? ???? ?? ? ????.</p>
+                  <strong>?? ??</strong>
+                  <p>?? ?? ??? ??????</p>
                   <div class="session-tag-row">
                     <div class="session-tag active">?? ?? ??</div>
                     <div class="session-tag">???</div>
@@ -1106,8 +1080,8 @@
               <button class="screen-hotspot city-next-hit" type="button" data-target="finish" aria-label="?? ???? ??"></button>
               <div class="stay-actions">
                 <div class="session-chip">
-                  <strong>??? ??</strong>
-                  <p>?? ????? ?? ??? ???? ?????? ??? ?? ??? ?????.</p>
+                  <strong>?? ??</strong>
+                  <p>?? ?? ??? ??????</p>
                   <div class="session-tag-row">
                     <div class="session-tag active">?? ????</div>
                     <div class="session-tag">???</div>
@@ -1128,7 +1102,7 @@
               <div class="finish-wrap">
                 <div class="finish-card">
                   <strong class="finish-time">4시간 12분</strong>
-                  <span class="finish-caption">목적지에 도착했어요.</span>
+                  <span class="finish-caption">무사히 여행을 마쳤어요.</span>
                 </div>
 
                 <div class="finish-actions">
@@ -1347,4 +1321,5 @@
   </script>
 </body>
 </html>
+
 
