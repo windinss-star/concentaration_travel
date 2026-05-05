@@ -19,6 +19,7 @@
       --card-bg: rgba(255, 255, 255, 0.94);
       --card-border: rgba(0, 0, 0, 0.06);
       --card-active: rgba(0, 102, 204, 0.08);
+      --paper: #f5f5f7;
       --cta-bg: #0066cc;
       --cta-text: #ffffff;
       --dark-surface: #272729;
@@ -137,7 +138,7 @@
     }
 
     .phone-screen {
-      background: url("./assets/main-ex-home-screen.png") center/cover no-repeat;
+      background: url("./assets/character-selection-screen.png") center/cover no-repeat;
     }
 
     .prototype-viewport {
@@ -281,7 +282,7 @@
       position: absolute;
       inset: 0;
       background:
-        url("./assets/main-ex-home-screen.png") center top / cover no-repeat;
+        url("./assets/character-selection-screen.png") center top / cover no-repeat;
       z-index: 1;
     }
 
@@ -493,6 +494,7 @@
     }
 
     .session-timer {
+      display: none;
       position: absolute;
       top: 44px;
       left: 14px;
@@ -502,88 +504,117 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
-    .session-timer strong {
-      display: block;
-      font-size: 18px;
-      line-height: 1;
-      color: var(--ink);
+    .session-hud {
+      position: absolute;
+      top: 46px;
+      left: 14px;
+      right: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      z-index: 3;
     }
 
-    .session-timer span {
+    .hud-card {
+      min-width: 118px;
+      padding: 10px 12px 11px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.56);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(18px) saturate(160%);
+      text-align: center;
+    }
+
+    .hud-card strong {
+      display: block;
+      font-size: 17px;
+      line-height: 1;
+      color: var(--ink);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .hud-card span {
       display: block;
       margin-top: 4px;
       color: var(--muted);
-      font-size: 12px;
-      letter-spacing: 0;
-      text-transform: none;
+      font-size: 11px;
+      line-height: 1.35;
     }
 
-    .session-location {
-      position: absolute;
-      top: 48px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.9);
-      font-size: 12px;
-      color: var(--ink);
-      z-index: 3;
-      white-space: nowrap;
-    }
-
-    .session-copy {
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      top: 96px;
-      z-index: 3;
-    }
-
-    .session-copy h3 {
-      margin: 0;
-      font-size: 28px;
-      line-height: 1.06;
-      letter-spacing: -0.02em;
-      font-weight: 600;
-      color: var(--dark-text);
-    }
-
-    .session-copy p {
-      margin: 8px 0 0;
-      color: var(--dark-muted);
-      font-size: 14px;
-      line-height: 1.52;
+    .hud-card.meta {
+      min-width: 108px;
+      text-align: center;
     }
 
     .session-actions {
       position: absolute;
       left: 14px;
       right: 14px;
-      bottom: 16px;
+      bottom: 18px;
       display: block;
     }
 
     .session-chip {
-      padding: 14px 14px 16px;
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.92);
+      padding: 16px 16px 18px;
+      border-radius: 26px;
+      background: rgba(255, 255, 255, 0.6);
       text-align: left;
       color: var(--ink);
       font-size: 13px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(18px) saturate(160%);
     }
 
     .session-chip strong {
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
       font-size: 14px;
+    }
+
+    .session-chip p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
     }
 
     .session-tag-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+    }
+
+    .session-volume-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .session-volume-icon {
+      width: 16px;
+      height: 16px;
+      flex: 0 0 auto;
+      background: center/contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236e6e73' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='11 5 6 9 3 9 3 15 6 15 11 19 11 5'/%3E%3Cpath d='M15.5 8.5a5 5 0 0 1 0 7'/%3E%3Cpath d='M18.5 5.5a9 9 0 0 1 0 13'/%3E%3C/svg%3E");
+    }
+
+    .session-volume {
+      flex: 1 1 auto;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    .session-volume::after {
+      content: "";
+      display: block;
+      width: 58%;
+      height: 100%;
+      border-radius: inherit;
+      background: #0066cc;
     }
 
     .session-tag {
@@ -964,26 +995,32 @@
             <section class="app-screen session-screen" data-screen="session">
               <div class="status-bar"></div>
 
-              <div class="session-timer">
-                <strong>04:58:12</strong>
-                <span>기내 소음</span>
-              </div>
-              <div class="session-location">다낭으로 향하는 비행기 안</div>
-              <div class="session-copy">
-                <h3>도착할 때까지,<br>조용히 집중합니다.</h3>
-                <p>공간 기반 화이트노이즈와 시네마형 화면으로 여행의 리듬을 따라가는 첫 세션 장면입니다.</p>
+              <div class="session-hud">
+                <div class="hud-card">
+                  <strong>04:58:12</strong>
+                  <span>남은 여행 시간</span>
+                </div>
+                <div class="hud-card meta">
+                  <strong>기내 소음</strong>
+                  <span>자동 전환</span>
+                </div>
               </div>
 
               <button class="screen-hotspot session-next-hit" type="button" data-target="city" aria-label="관광지 화면으로 이동"></button>
 
               <div class="session-actions">
                 <div class="session-chip">
-                  <strong>사운드 변경</strong>
+                  <strong>사운드 패널</strong>
+                  <p>현재 공간에 맞는 사운드를 자동으로 재생하고, 필요할 때만 짧게 바꿉니다.</p>
                   <div class="session-tag-row">
                     <div class="session-tag active">기내 소음</div>
                     <div class="session-tag">빗소리</div>
                     <div class="session-tag">화이트노이즈</div>
                     <div class="session-tag">자동 전환</div>
+                  </div>
+                  <div class="session-volume-row">
+                    <div class="session-volume-icon" aria-hidden="true"></div>
+                    <div class="session-volume"></div>
                   </div>
                 </div>
               </div>
